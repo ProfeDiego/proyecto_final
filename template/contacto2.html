@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title>{% block title %} Contacto {% endblock title %}</title>
+
+
+{% block contenido %}
+    
+
+    
+
+ <!-- Start Content Page -->
+ <div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Contáctanos</h1>
+        <p>
+            Cualquier duda o sugerencia puedes hacerla desde aquí. Estamos para ayudarte
+        </p>
+    </div>
+</div>
+
+<!-- Start Contact -->
+<div class="container py-5">
+    <div class="row py-5">
+        <form action="" class="col-md-9 m-auto" method="POST">
+            
+            {% csrf_token %}
+            
+            {{ form }}
+
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+                </div>
+            </div>
+        </form>
+        {{ mensaje }}
+    </div>
+</div>
+<!-- End Contact -->
+
+{% endblock %}

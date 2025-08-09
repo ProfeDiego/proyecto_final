@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+    
+{% for comentario in comentarios %}
+<div class="comentario">
+    <p class="usuario">{{ comentario.usuario.username }}</p>
+    <p class="fecha">{{ comentario.fecha }}</p>
+    <p class="contenido">{{ comentario.contenido }}</p>
+</div>
+{% endfor %}
+
+{% endblock contenido %}
+    
+

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+<center>
+<div class="container-fluid" style="margin: 200px;">
+
+    <li>{{ articulos.titulo }}</li>
+    <li>{{ articulos.resumen }}</li>
+    <li>{{ articulos.categoria }}</li>
+    <br>
+    <li>{{ articulos.contenido }}</li>
+    {% if articulos.images %}
+        {% for image in articulos.images.all %}
+            <img src="{{ image.image.url }}" alt="Imagen del artículo">
+        {% endfor %}
+    {% else %}
+    <p>No hay imagen disponible</p>
+    {% endif %}
+
+    <div class="container-fluid" style="margin-top: 300px;">
+        <a id="boton_post" href="#">Modificar Post</a>
+    </div>
+    <div class="container-fluid" style="margin-top: 300px;">
+        <a id="boton_post" href="#">Eliminar Post</a>
+    </div>
+
+</div>
+
+<!-- Aquí seguirán estando los comentarios, pero 
+    lo separamos en otro template y lo incluímos en este -->
+
+
+
+    </center>
+{% endblock %}
