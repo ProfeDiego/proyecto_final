@@ -22,6 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure--yxk&3m2v6yqr$6h7!%3yq)&3dt^r9-gc3dd&zq$nx5@5nmxg)'
 
+DEBUG = False
+
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL    ='usuario.Usuario'
 
@@ -30,6 +33,12 @@ LOGOUT_REDIRECT_URL= '/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Application definition
 
@@ -70,7 +79,7 @@ ROOT_URLCONF = 'nuevo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(BASE_DIR),'template')],
+        'DIRS': [BASE_DIR / 'template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,12 +133,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR),'static'),)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATIC_ROOT = '../nuevo/staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'media')
+MEDIA_ROOT = '../nuevo/media/'
